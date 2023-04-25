@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('terms', [TermController::class, 'index'])->name('terms');
-
+Route::get('term', [TermController::class, 'index'])->name('terms');
 
 /* Admin */
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
