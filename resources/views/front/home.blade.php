@@ -2,7 +2,7 @@
 
 
 @section('main_content')
-<div class="slider" style="background-image: url({{ asset('uploads/banner5.jpg') }})">
+<div class="slider" style="background-image: url({{ asset('uploads/banner_home.jpg') }})">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
