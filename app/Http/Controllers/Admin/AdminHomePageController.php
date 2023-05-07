@@ -40,6 +40,7 @@ class AdminHomePageController extends Controller
             $request->file('background')->move(public_path('uploads/'),$final_name);
 
             $home_page_data->background = $final_name;
+        }
 
 
         $home_page_data->heading = $request->heading;
@@ -48,9 +49,9 @@ class AdminHomePageController extends Controller
         $home_page_data->job_category = $request->job_category;
         $home_page_data->job_location = $request->job_location;
         $home_page_data->search = $request->search;
+
         $home_page_data->update();
 
         return redirect()->back()->with('success', 'Data is updated successfully.');
-        }
     }
 }
