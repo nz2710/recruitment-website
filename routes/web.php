@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\TermController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
@@ -12,10 +13,11 @@ use App\Http\Controllers\Admin\AdminJobCategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('terms', [TermController::class, 'index'])->name('terms');
+Route::get('job-categories', [JobCategoryController::class, 'categories'])->name('job_categories');
 
 
 /* Admin */
-Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
+
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
 Route::post('/admin/login-submit', [AdminLoginController::class, 'login_submit'])->name('admin_login_submit');
 Route::get('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin_logout');
