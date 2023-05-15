@@ -5,12 +5,14 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\TermController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('terms', [TermController::class, 'index'])->name('terms');
+Route::get('job-categories', [JobCategoryController::class, 'categories'])->name('job_categories');
 
 
 /* Admin */
