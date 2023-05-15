@@ -4,12 +4,12 @@
 @section('seo_meta_description'){{ $job_category_page_item->meta_description }}@endsection --}}
 
 @section('main_content')
-<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_job_categories) }}')">
+<div class="page-top" style="background-image: url('uploads/'banner.jpg')">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $job_category_page_item->heading }}</h2>
+                <h2></h2>
             </div>
         </div>
     </div>

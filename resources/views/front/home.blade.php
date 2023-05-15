@@ -70,7 +70,7 @@
                                                 <option value="">
                                                 {{$home_page_data->job_category}}
                                                 </option>
-                                                @foreach($all_job_categories as $item)
+                                                @foreach($job_categories as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                 @endforeach
                                             </select>
