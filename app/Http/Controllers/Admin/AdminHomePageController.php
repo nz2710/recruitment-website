@@ -29,6 +29,8 @@ class AdminHomePageController extends Controller
             'job_category_status' => 'required',
             'why_choose_heading' => 'required',
             'why_choose_status' => 'required',
+            'testimonial_heading' => 'required',
+            'testimonial_status' => 'required',
         ]);
 
         if($request->hasFile('background')) {
@@ -61,6 +63,20 @@ class AdminHomePageController extends Controller
             $home_page_data->why_choose_background = $final_name1;
         }
 
+        if($request->hasFile('testimonial_background')) {
+            $request->validate([
+                'testimonial_background' => 'image|mimes:jpg,jpeg,png,gif'
+            ]);
+
+            unlink(public_path('uploads/'.$home_page_data->testimonial_background));
+
+            $ext1 = $request->file('testimonial_background')->extension();
+            $final_name1 = 'testimonial_home_background'.'.'.$ext1;
+
+            $request->file('testimonial_background')->move(public_path('uploads/'),$final_name1);
+
+            $home_page_data->testimonial_background = $final_name1;
+        }
 
         $home_page_data->heading = $request->heading;
         $home_page_data->text = $request->text;
@@ -76,6 +92,9 @@ class AdminHomePageController extends Controller
         $home_page_data->why_choose_heading = $request->why_choose_heading;
         $home_page_data->why_choose_subheading = $request->why_choose_subheading;
         $home_page_data->why_choose_status = $request->why_choose_status;
+
+        $home_page_data->testimonial_heading = $request->testimonial_heading;
+        $home_page_data->testimonial_status = $request->testimonial_status;
 
         $home_page_data->update();
 

@@ -32,9 +32,9 @@ return new class extends Migration
             // $table->text('featured_jobs_heading');
             // $table->text('featured_jobs_subheading')->nullable();
             // $table->text('featured_jobs_status');
-            // $table->text('testimonial_heading');
-            // $table->text('testimonial_background');
-            // $table->text('testimonial_status');
+            $table->text('testimonial_heading');
+            $table->text('testimonial_background');
+            $table->text('testimonial_status');
             // $table->text('blog_heading');
             // $table->text('blog_subheading')->nullable();
             // $table->text('blog_status');
