@@ -30,10 +30,10 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <img src="{{ asset('upload/'.$item->photo) }}" alt="" class="w_150">
+                                        <img src="{{ asset('uploads/'.$item->photo) }}" alt="" class="w_150">
                                     </td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->designation }}</td>  
+                                    <td>{{ $item->designation }}</td>
                                     <td class="pt_10 pb_10">
                                         <a href="{{ route('admin_testimonial_edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="{{ route('admin_testimonial_delete',$item->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Delete</a>
@@ -49,4 +49,3 @@
     </div>
 </div>
 @endsection
- 
