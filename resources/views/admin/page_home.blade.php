@@ -22,6 +22,8 @@
 
                                     <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">Why Choose Us</button>
 
+                                    <button class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-4" type="button" role="tab" aria-controls="v-pills-4" aria-selected="false">Featured Jobs</button>
+
                                     <button class="nav-link" id="v-pills-5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-5" type="button" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial</button>
                                 </div>
                             </div>
@@ -144,6 +146,30 @@
                                             </div>
                                         </div>
                                         <!-- Why Choose Section End -->
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab" tabindex="0">
+                                        <!-- Featured Jobs Section Start -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Heading *</label>
+                                                    <input type="text" class="form-control" name="featured_jobs_heading" value="{{ $page_home_data->featured_jobs_heading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Sub Heading</label>
+                                                    <input type="text" class="form-control" name="featured_jobs_subheading" value="{{ $page_home_data->featured_jobs_subheading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Status *</label>
+                                                    <select name="featured_jobs_status" class="form-control select2">
+                                                        <option value="Show" @if($page_home_data->featured_jobs_status == 'Show') selected @endif>Show</option>
+                                                        <option value="Hide" @if($page_home_data->featured_jobs_status == 'Hide') selected @endif>Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Featured Jobs Section End -->
                                     </div>
 
                                     <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab" tabindex="0">

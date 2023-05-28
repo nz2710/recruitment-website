@@ -174,13 +174,14 @@
 </div>
 @endif
 
+@if($home_page_data->featured_jobs_status == 'Show')
 <div class="job">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Featured Jobs</h2>
-                    <p>Find the awesome jobs that matches your skill</p>
+                    <h2>{{ $home_page_data->featured_jobs_heading }}</h2>
+                    <p>{{ $home_page_data->featured_jobs_subheading }}</p>
                 </div>
             </div>
         </div>
@@ -423,6 +424,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @if($home_page_data->testimonial_status == 'Show')
 <div class="testimonial" style="background-image: url({{ asset('uploads/'.$home_page_data->testimonial_background) }})" >
