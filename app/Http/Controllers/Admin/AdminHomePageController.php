@@ -29,6 +29,8 @@ class AdminHomePageController extends Controller
             'job_category_status' => 'required',
             'why_choose_heading' => 'required',
             'why_choose_status' => 'required',
+            'featured_jobs_heading' => 'required',
+            'featured_jobs_status' => 'required',
             'testimonial_heading' => 'required',
             'testimonial_status' => 'required',
         ]);
@@ -92,6 +94,10 @@ class AdminHomePageController extends Controller
         $home_page_data->why_choose_heading = $request->why_choose_heading;
         $home_page_data->why_choose_subheading = $request->why_choose_subheading;
         $home_page_data->why_choose_status = $request->why_choose_status;
+
+        $home_page_data->featured_jobs_heading = $request->featured_jobs_heading;
+        $home_page_data->featured_jobs_subheading = $request->featured_jobs_subheading;
+        $home_page_data->featured_jobs_status = $request->featured_jobs_status;
 
         $home_page_data->testimonial_heading = $request->testimonial_heading;
         $home_page_data->testimonial_status = $request->testimonial_status;
