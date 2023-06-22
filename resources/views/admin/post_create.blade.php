@@ -23,8 +23,8 @@
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label>Title *</label>
-                            <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                            <label>Heading *</label>
+                            <input type="text" class="form-control" name="heading" value="{{ old('heading') }}">
                         </div>
                         <div class="form-group mb-3">
                             <label>Slug *</label>
@@ -37,6 +37,14 @@
                         <div class="form-group mb-3">
                             <label>Description *</label>
                             <textarea name="description" class="form-control editor" cols="30" rows="10">{{ old('description') }}</textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Title</label>
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Meta Description</label>
+                            <textarea name="meta_description" class="form-control h_100" cols="30" rows="10">{{ old('meta_description') }}</textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
