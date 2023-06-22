@@ -25,9 +25,11 @@
                                     <button class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-4" type="button" role="tab" aria-controls="v-pills-4" aria-selected="false">Featured Jobs</button>
 
                                     <button class="nav-link" id="v-pills-5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-5" type="button" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial</button>
+
+                                    <button class="nav-link" id="v-pills-6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-6" type="button" role="tab" aria-controls="v-pills-6" aria-selected="false">Blog</button>
+
                                 </div>
                             </div>
-
                             <div class="col-lg-9 col-md-12">
                                 <div class="tab-content" id="v-pills-tabContent">
 
@@ -112,6 +114,8 @@
                                         <!-- Job Category Section End -->
                                     </div>
 
+
+
                                     <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab" tabindex="0">
                                         <!-- Why Choose Section Start -->
                                         <div class="row">
@@ -148,6 +152,8 @@
                                         <!-- Why Choose Section End -->
                                     </div>
 
+
+
                                     <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab" tabindex="0">
                                         <!-- Featured Jobs Section Start -->
                                         <div class="row">
@@ -171,6 +177,8 @@
                                         </div>
                                         <!-- Featured Jobs Section End -->
                                     </div>
+
+
 
                                     <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab" tabindex="0">
                                         <!-- Testimonial Section Start -->
@@ -204,19 +212,47 @@
                                         <!-- Testimonial Section End -->
                                     </div>
 
-                                    <div class="mb-4">
-                                        <label class="form-label"></label>
-                                        <button type="submit" class="btn btn-primary">Update</button>
+
+
+                                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab" tabindex="0">
+                                        <!-- Blog Section Start -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Heading *</label>
+                                                    <input type="text" class="form-control" name="blog_heading" value="{{ $page_home_data->blog_heading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Sub Heading</label>
+                                                    <input type="text" class="form-control" name="blog_subheading" value="{{ $page_home_data->blog_subheading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Status *</label>
+                                                    <select name="blog_status" class="form-control select2">
+                                                        <option value="Show" @if($page_home_data->blog_status == 'Show') selected @endif>Show</option>
+                                                        <option value="Hide" @if($page_home_data->blog_status == 'Hide') selected @endif>Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Blog Section End -->
                                     </div>
+
                                 </div>
 
+                                <div class="mb-4">
+                                    <label class="form-label"></label>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
                             </div>
 
-                        </form>
+                        </div>
 
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
