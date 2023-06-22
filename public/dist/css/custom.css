@@ -16,6 +16,14 @@ table.t1 tr td {
     border-top: 1px solid #e3e3e3;
 }
 
+h4.seo_section {
+    margin-top: 40px;
+    padding: 5px;
+    background: #ffcfcf;
+    color: #dc3545;
+    font-size: 16px;
+}
+
 .card.card-statistic-1 .card-header h4, .card.card-statistic-2 .card-header h4 {
     letter-spacing: normal;
 }
@@ -427,12 +435,15 @@ hr.invoice-above-table {
     margin-right: 4px;
 }
 
-.cusom-tab .nav-pills .nav-link{
+.custom-tab .nav-pills .nav-link {
     background: #d7e3f9;
     margin-bottom: 5px;
 }
-
-.cusom-tab .nav-pills .nav-link.active{
+.custom-tab .nav-pills .nav-link.active {
     color: #fff!important;
-    background: #6777ef!important;
+    background-color: #6777ef!important;
+}
+
+#example1_paginate .page-item.active .page-link {
+    color: #fff;
 }

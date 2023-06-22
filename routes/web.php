@@ -18,6 +18,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('terms', [TermController::class, 'index'])->name('terms');
 Route::get('job-categories', [JobCategoryController::class, 'categories'])->name('job_categories');
 Route::get('blog', [PostController::class, 'index'])->name('blog');
+Route::get('post/{slug}', [PostController::class, 'detail'])->name('post');
 
 
 /* Admin */

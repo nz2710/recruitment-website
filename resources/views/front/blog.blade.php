@@ -24,7 +24,7 @@
                     </div>
                     <div class="text">
                         <h2>
-                            <a href="post.html"
+                            <a href="{{ route('post',$item->slug) }}"
                                 >{{ $item->title }}</a
                             >
                         </h2>
@@ -34,7 +34,7 @@
                             </p>
                         </div>
                         <div class="button">
-                            <a href="post.html" class="btn btn-primary"
+                            <a href="{{ route('post',$item->slug) }}" class="btn btn-primary"
                                 >Read More</a
                             >
                         </div>
