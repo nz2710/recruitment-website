@@ -20,7 +20,7 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Photo</th>
-                                <th>Title</th>
+                                <th>Heading</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -31,7 +31,7 @@
                                     <td>
                                         <img src="{{ asset('uploads/'.$item->photo) }}" alt="" class="w_150">
                                     </td>
-                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $item->heading }}</td>
                                     <td class="pt_10 pb_10">
                                         <a href="{{ route('admin_post_edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="{{ route('admin_post_delete',$item->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Delete</a>
