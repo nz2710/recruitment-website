@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\PricingController;
 use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminHomeController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminFaqPageController;
+use App\Http\Controllers\Admin\AdminPackageController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminBlogPageController;
 use App\Http\Controllers\Admin\AdminHomePageController;
@@ -34,6 +36,7 @@ Route::get('faq', [FaqController::class, 'index'])->name('faq');
 Route::get('blog', [PostController::class, 'index'])->name('blog');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
+Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
 
 
 /* Admin */
@@ -107,4 +110,11 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/faq/edit/{id}', [AdminFaqController::class, 'edit'])->name('admin_faq_edit');
     Route::post('/admin/faq/update/{id}', [AdminFaqController::class, 'update'])->name('admin_faq_update');
     Route::get('/admin/faq/delete/{id}', [AdminFaqController::class, 'delete'])->name('admin_faq_delete');
+
+    Route::get('/admin/package/view', [AdminPackageController::class, 'index'])->name('admin_package');
+    Route::get('/admin/package/create', [AdminPackageController::class, 'create'])->name('admin_package_create');
+    Route::post('/admin/package/store', [AdminPackageController::class, 'store'])->name('admin_package_store');
+    Route::get('/admin/package/edit/{id}', [AdminPackageController::class, 'edit'])->name('admin_package_edit');
+    Route::post('/admin/package/update/{id}', [AdminPackageController::class, 'update'])->name('admin_package_update');
+    Route::get('/admin/package/delete/{id}', [AdminPackageController::class, 'delete'])->name('admin_package_delete');
 });
