@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\AdminContactPageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Admin\AdminJobCategoryPageController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('terms-of-use', [TermsController::class, 'index'])->name('terms');
@@ -68,6 +69,9 @@ Route::middleware(['admin:admin'])->group(function(){
 
     Route::get('/admin/contact-page', [AdminContactPageController::class, 'index'])->name('admin_contact_page');
     Route::post('/admin/contact-page/update', [AdminContactPageController::class, 'update'])->name('admin_contact_page_update');
+
+    Route::get('/admin/job-category-page', [AdminJobCategoryPageController::class, 'index'])->name('admin_job_category_page');
+    Route::post('/admin/job-category-page/update', [AdminJobCategoryPageController::class, 'update'])->name('admin_job_category_page_update');
 
     Route::get('/admin/job-category/view', [AdminJobCategoryController::class, 'index'])->name('admin_job_category');
     Route::get('/admin/job-category/create', [AdminJobCategoryController::class, 'create'])->name('admin_job_category_create');

@@ -1,7 +1,7 @@
 @extends('front.layout.app')
 
-{{-- @section('seo_title'){{ $job_category_page_item->title }}@endsection
-@section('seo_meta_description'){{ $job_category_page_item->meta_description }}@endsection --}}
+@section('seo_title'){{ $job_category_page_item->title }}@endsection
+@section('seo_meta_description'){{ $job_category_page_item->meta_description }}@endsection
 
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/banner.jpg') }})">
