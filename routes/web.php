@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\TermsController;
+use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminHomeController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\AdminBlogPageController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminTermPageController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
+use App\Http\Controllers\Admin\AdminContactPageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
@@ -29,6 +31,9 @@ Route::get('blog', [PostController::class, 'index'])->name('blog');
 Route::get('post/{slug}', [PostController::class, 'detail'])->name('post');
 Route::get('faq', [FaqController::class, 'index'])->name('faq');
 Route::get('blog', [PostController::class, 'index'])->name('blog');
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
+
 
 /* Admin */
 
@@ -60,6 +65,9 @@ Route::middleware(['admin:admin'])->group(function(){
 
     Route::get('/admin/privacy-page', [AdminPrivacyPageController::class, 'index'])->name('admin_privacy_page');
     Route::post('/admin/privacy-page/update', [AdminPrivacyPageController::class, 'update'])->name('admin_privacy_page_update');
+
+    Route::get('/admin/contact-page', [AdminContactPageController::class, 'index'])->name('admin_contact_page');
+    Route::post('/admin/contact-page/update', [AdminContactPageController::class, 'update'])->name('admin_contact_page_update');
 
     Route::get('/admin/job-category/view', [AdminJobCategoryController::class, 'index'])->name('admin_job_category');
     Route::get('/admin/job-category/create', [AdminJobCategoryController::class, 'create'])->name('admin_job_category_create');

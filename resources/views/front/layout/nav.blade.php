@@ -19,37 +19,25 @@
                 >
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-                            <a href="{{ route('home')}}" class="nav-link"
-                                >Home</a
-                            >
+                            <a href="{{ route('home')}}" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="jobs.html" class="nav-link">
-                                Find Jobs</a
-                            >
+                            <a href="jobs.html" class="nav-link">Find Jobs</a>
                         </li>
                         <li class="nav-item">
-                            <a href="companies.html" class="nav-link"
-                                >Companies</a
-                            >
+                            <a href="companies.html" class="nav-link">Companies</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pricing.html" class="nav-link"
-                                >Pricing</a
-                            >
+                            <a href="pricing.html" class="nav-link">Pricing</a>
                         </li>
                         <li class="nav-item {{ Request::is('faq')||Request::is('faq/*') ? 'active' : '' }}" >
                             <a href="{{ route('faq') }}" class="nav-link">FAQ</a>
                         </li>
                         <li class="nav-item {{ Request::is('blog')||Request::is('post/*') ? 'active' : '' }}">
-                            <a href="{{ route('blog') }}" class="nav-link"
-                                >Blog</a
-                            >
+                            <a href="{{ route('blog') }}" class="nav-link">Blog</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link"
-                                >Contact</a
-                            >
+                        <li class="nav-item {{ Request::is('contact') ? 'active' : '' }}">
+                            <a href="{{ route('contact') }}" class="nav-link">Contact</a>
                         </li>
                     </ul>
                 </div>
