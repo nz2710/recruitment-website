@@ -38,6 +38,13 @@
                                 </a>
                             </li>
 
+                            @elseif(Auth::guard('candidate')->check())
+                            <li class="menu">
+                                <a href="{{ route('candidate_dashboard') }}">
+                                    <i class="fas fa-home"></i> Dashboard
+                                </a>
+                            </li>
+
                             @else
                             <li class="menu">
                                 <a href="{{ route('login') }}">
