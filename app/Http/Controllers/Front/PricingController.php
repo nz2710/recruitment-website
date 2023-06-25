@@ -12,6 +12,7 @@ class PricingController extends Controller
     public function index()
     {
         $packages = Package::get();
-        return view('front.pricing', compact('packages'));
+        $pricing_page_item = PagePricingItem::where('id',1)->first();
+        return view('front.pricing', compact('packages','pricing_page_item'));
     }
 }
