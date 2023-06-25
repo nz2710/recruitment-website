@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PostController;
+use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\TermsController;
+use App\Http\Controllers\Front\SignupController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\PricingController;
 use App\Http\Controllers\Front\PrivacyController;
@@ -19,7 +21,9 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminBlogPageController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminTermPageController;
+use App\Http\Controllers\Admin\AdminOtherPageController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
+use App\Http\Controllers\Front\ForgetPasswordController;
 use App\Http\Controllers\Admin\AdminContactPageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminPricingPageController;
@@ -39,6 +43,9 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
 Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
 
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('create-account', [SignupController::class, 'index'])->name('signup');
+Route::get('forget-password', [ForgetPasswordController::class, 'index'])->name('forget_password');
 
 /* Admin */
 
@@ -79,6 +86,9 @@ Route::middleware(['admin:admin'])->group(function(){
 
     Route::get('/admin/pricing-page', [AdminPricingPageController::class, 'index'])->name('admin_pricing_page');
     Route::post('/admin/pricing-page/update', [AdminPricingPageController::class, 'update'])->name('admin_pricing_page_update');
+
+    Route::get('/admin/other-page', [AdminOtherPageController::class, 'index'])->name('admin_other_page');
+    Route::post('/admin/other-page/update', [AdminOtherPageController::class, 'update'])->name('admin_other_page_update');
 
     Route::get('/admin/job-category/view', [AdminJobCategoryController::class, 'index'])->name('admin_job_category');
     Route::get('/admin/job-category/create', [AdminJobCategoryController::class, 'create'])->name('admin_job_category_create');
