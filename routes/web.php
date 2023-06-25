@@ -47,6 +47,10 @@ Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('create-account', [SignupController::class, 'index'])->name('signup');
 Route::get('forget-password', [ForgetPasswordController::class, 'index'])->name('forget_password');
 
+/* Company */
+Route::post('company_signup_submit', [SignupController::class, 'company_signup_submit'])->name('company_signup_submit');
+Route::get('company_signup_verify/{token}/{email}', [SignupController::class, 'company_signup_verify'])->name('company_signup_verify');
+
 /* Admin */
 
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
