@@ -13,6 +13,7 @@ use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminFaqPageController;
@@ -48,8 +49,20 @@ Route::get('create-account', [SignupController::class, 'index'])->name('signup')
 Route::get('forget-password', [ForgetPasswordController::class, 'index'])->name('forget_password');
 
 /* Company */
+Route::post('company_login_submit', [LoginController::class, 'company_login_submit'])->name('company_login_submit');
 Route::post('company_signup_submit', [SignupController::class, 'company_signup_submit'])->name('company_signup_submit');
 Route::get('company_signup_verify/{token}/{email}', [SignupController::class, 'company_signup_verify'])->name('company_signup_verify');
+Route::get('forget-password/company', [ForgetPasswordController::class, 'company_forget_password'])->name('company_forget_password');
+Route::post('forget-password/company/submit', [ForgetPasswordController::class, 'company_forget_password_submit'])->name('company_forget_password_submit');
+Route::get('reset-password/company/{token}/{email}', [ForgetPasswordController::class, 'company_reset_password'])->name('company_reset_password');
+Route::post('reset-password/company/submit', [ForgetPasswordController::class, 'company_reset_password_submit'])->name('company_reset_password_submit');
+Route::get('/company/logout', [LoginController::class, 'company_logout'])->name('company_logout');
+
+
+/* Company Middleware */
+Route::middleware(['company:company'])->group(function() {
+    Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
+});
 
 /* Admin */
 
