@@ -81,6 +81,28 @@ Route::middleware(['company:company'])->group(function() {
     Route::post('/company/stripe/payment', [CompanyController::class, 'stripe'])->name('company_stripe');
     Route::get('/company/stripe/success', [CompanyController::class, 'stripe_success'])->name('company_stripe_success');
     Route::get('/company/stripe/cancel', [CompanyController::class, 'stripe_cancel'])->name('company_stripe_cancel');
+
+    Route::get('/company/edit-profile', [CompanyController::class, 'edit_profile'])->name('company_edit_profile');
+    Route::post('/company/edit-profile/update', [CompanyController::class, 'edit_profile_update'])->name('company_edit_profile_update');
+
+    Route::get('/company/edit-password', [CompanyController::class, 'edit_password'])->name('company_edit_password');
+    Route::post('/company/edit-password/update', [CompanyController::class, 'edit_password_update'])->name('company_edit_password_update');
+
+    Route::get('/company/photos', [CompanyController::class, 'photos'])->name('company_photos');
+    Route::post('/company/photos/submit', [CompanyController::class, 'photos_submit'])->name('company_photos_submit');
+    Route::get('/company/photos/delete/{id}', [CompanyController::class, 'photos_delete'])->name('company_photos_delete');
+
+    Route::get('/company/videos', [CompanyController::class, 'videos'])->name('company_videos');
+    Route::post('/company/videos/submit', [CompanyController::class, 'videos_submit'])->name('company_videos_submit');
+    Route::get('/company/videos/delete/{id}', [CompanyController::class, 'videos_delete'])->name('company_videos_delete');
+
+    Route::get('/company/create-job', [CompanyController::class, 'jobs_create'])->name('company_jobs_create');
+    Route::post('/company/create-job-submit', [CompanyController::class, 'jobs_create_submit'])->name('company_jobs_create_submit');
+
+    Route::get('/company/jobs', [CompanyController::class, 'jobs'])->name('company_jobs');
+    Route::get('/company/job-edit/{id}', [CompanyController::class, 'jobs_edit'])->name('company_jobs_edit');
+    Route::post('/company/job-update/{id}', [CompanyController::class, 'jobs_update'])->name('company_jobs_update');
+    Route::get('/company/job-delete/{id}', [CompanyController::class, 'jobs_delete'])->name('company_jobs_delete');
 });
 
 
@@ -97,6 +119,10 @@ Route::post('reset-password/candidate/submit', [ForgetPasswordController::class,
 /* Candidate Middleware */
 Route::middleware(['candidate:candidate'])->group(function() {
     Route::get('/candidate/dashboard', [CandidateController::class, 'dashboard'])->name('candidate_dashboard');
+    Route::get('/candidate/edit-profile', [CandidateController::class, 'edit_profile'])->name('candidate_edit_profile');
+    Route::post('/candidate/edit-profile/update', [CandidateController::class, 'edit_profile_update'])->name('candidate_edit_profile_update');
+    Route::get('/candidate/edit-password', [CandidateController::class, 'edit_password'])->name('candidate_edit_password');
+    Route::post('/candidate/edit-password/update', [CandidateController::class, 'edit_password_update'])->name('candidate_edit_password_update');
 
     Route::get('/candidate/education/view', [CandidateController::class, 'education'])->name('candidate_education');
     Route::get('/candidate/education/create', [CandidateController::class, 'education_create'])->name('candidate_education_create');
@@ -104,6 +130,7 @@ Route::middleware(['candidate:candidate'])->group(function() {
     Route::get('/candidate/education/edit/{id}', [CandidateController::class, 'education_edit'])->name('candidate_education_edit');
     Route::post('/candidate/education/update/{id}', [CandidateController::class, 'education_update'])->name('candidate_education_update');
     Route::get('/candidate/education/delete/{id}', [CandidateController::class, 'education_delete'])->name('candidate_education_delete');
+
 });
 
 /* Admin */
