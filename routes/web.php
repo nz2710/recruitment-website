@@ -97,6 +97,13 @@ Route::post('reset-password/candidate/submit', [ForgetPasswordController::class,
 /* Candidate Middleware */
 Route::middleware(['candidate:candidate'])->group(function() {
     Route::get('/candidate/dashboard', [CandidateController::class, 'dashboard'])->name('candidate_dashboard');
+
+    Route::get('/candidate/education/view', [CandidateController::class, 'education'])->name('candidate_education');
+    Route::get('/candidate/education/create', [CandidateController::class, 'education_create'])->name('candidate_education_create');
+    Route::post('/candidate/education/store', [CandidateController::class, 'education_store'])->name('candidate_education_store');
+    Route::get('/candidate/education/edit/{id}', [CandidateController::class, 'education_edit'])->name('candidate_education_edit');
+    Route::post('/candidate/education/update/{id}', [CandidateController::class, 'education_update'])->name('candidate_education_update');
+    Route::get('/candidate/education/delete/{id}', [CandidateController::class, 'education_delete'])->name('candidate_education_delete');
 });
 
 /* Admin */
