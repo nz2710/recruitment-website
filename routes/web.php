@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Front\JobListingController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminFaqPageController;
 use App\Http\Controllers\Admin\AdminJobTypeController;
@@ -52,6 +53,10 @@ Route::get('blog', [PostController::class, 'index'])->name('blog');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
 Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
+
+Route::get('job-listing', [JobListingController::class, 'index'])->name('job_listing');
+Route::get('job-detail/{id}', [JobListingController::class, 'detail'])->name('job');
+Route::post('job-enquery/email', [JobListingController::class, 'send_email'])->name('job_enquery_send_email');
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('create-account', [SignupController::class, 'index'])->name('signup');

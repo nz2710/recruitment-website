@@ -4,7 +4,7 @@
 @section('seo_meta_description'){{ $job_category_page_item->meta_description }}@endsection
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ asset('uploads/banner.jpg') }})">
+<div class="page-top" style="background-image: url('{{ asset('uploads/banner.jpg') }}')">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
