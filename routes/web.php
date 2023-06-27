@@ -28,6 +28,7 @@ use App\Http\Controllers\Candidate\CandidateController;
 use App\Http\Controllers\Admin\AdminJobGenderController;
 use App\Http\Controllers\Admin\AdminOtherPageController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
+use App\Http\Controllers\Front\CompanyListingController;
 use App\Http\Controllers\Front\ForgetPasswordController;
 use App\Http\Controllers\Admin\AdminCompanySizeController;
 use App\Http\Controllers\Admin\AdminContactPageController;
@@ -57,6 +58,10 @@ Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
 Route::get('job-listing', [JobListingController::class, 'index'])->name('job_listing');
 Route::get('job-detail/{id}', [JobListingController::class, 'detail'])->name('job');
 Route::post('job-enquery/email', [JobListingController::class, 'send_email'])->name('job_enquery_send_email');
+
+Route::get('company-listing', [CompanyListingController::class, 'index'])->name('company_listing');
+Route::get('company-detail/{id}', [CompanyListingController::class, 'detail'])->name('company');
+Route::post('company-enquery/email', [CompanyListingController::class, 'send_email'])->name('company_enquery_send_email');
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('create-account', [SignupController::class, 'index'])->name('signup');
