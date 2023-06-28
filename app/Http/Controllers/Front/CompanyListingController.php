@@ -57,9 +57,9 @@ class CompanyListingController extends Controller
 
         $advertisement_data = Advertisement::where('id',1)->first();
 
-        // $other_page_item = PageOtherItem::where('id',1)->first();
+        $other_page_item = PageOtherItem::where('id',1)->first();
 
-        return view('front.company_listing', compact('companies','company_industries','company_locations','company_sizes','form_name','form_industry','form_location','form_size','form_founded','advertisement_data'));
+        return view('front.company_listing', compact('companies','company_industries','company_locations','company_sizes','form_name','form_industry','form_location','form_size','form_founded','advertisement_data','other_page_item'));
     }
 
     public function detail($id)
@@ -85,9 +85,9 @@ class CompanyListingController extends Controller
 
         $jobs = Job::with('rJobCategory','rJobLocation','rJobType','rJobExperience','rJobGender','rJobSalaryRange')->where('company_id',$company_single->id)->get();
 
-        // $other_page_item = PageOtherItem::where('id',1)->first();
+        $other_page_item = PageOtherItem::where('id',1)->first();
 
-        return view('front.company', compact('company_single','company_photos','company_videos','jobs'));
+        return view('front.company', compact('company_single','company_photos','company_videos','jobs','other_page_item'));
     }
 
     public function send_email(Request $request)
