@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Front\JobListingController;
+use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Admin\AdminBannerController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminFaqPageController;
@@ -31,6 +32,7 @@ use App\Http\Controllers\Admin\AdminOtherPageController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Front\CompanyListingController;
 use App\Http\Controllers\Front\ForgetPasswordController;
+use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminCompanySizeController;
 use App\Http\Controllers\Admin\AdminContactPageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
@@ -68,6 +70,9 @@ Route::post('company-enquery/email', [CompanyListingController::class, 'send_ema
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('create-account', [SignupController::class, 'index'])->name('signup');
 Route::get('forget-password', [ForgetPasswordController::class, 'index'])->name('forget_password');
+
+Route::post('subscriber/send-email', [SubscriberController::class, 'send_email'])->name('subscriber_send_email');
+Route::get('subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_email_verify');
 
 /* Company */
 Route::post('company_login_submit', [LoginController::class, 'company_login_submit'])->name('company_login_submit');
@@ -332,4 +337,9 @@ Route::middleware(['admin:admin'])->group(function(){
 
     Route::get('/admin/banner', [AdminBannerController::class, 'index'])->name('admin_banner');
     Route::post('/admin/banner/update', [AdminBannerController::class, 'update'])->name('admin_banner_update');
+    
+    Route::get('/admin/all-subscribers', [AdminSubscriberController::class, 'all_subscribers'])->name('admin_all_subscribers');
+    Route::get('/admin/subscribers-send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscribers_send_email');
+    Route::post('/admin/subscribers-send-email-submit', [AdminSubscriberController::class, 'send_email_submit'])->name('admin_subscribers_send_email_submit');
+    Route::get('/admin/subscriber-delete/{id}', [AdminSubscriberController::class, 'delete'])->name('admin_subscriber_delete');
 });
