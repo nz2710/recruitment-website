@@ -75,7 +75,7 @@
 
                     </form>
 
-                    {{-- @if($advertisement_data->company_listing_ad_status == 'Show')
+                    @if($advertisement_data->company_listing_ad_status == 'Show')
                     <div class="advertisement">
                         @if($advertisement_data->company_listing_ad_url == null)
                             <img src="{{ asset('uploads/'.$advertisement_data->company_listing_ad) }}" alt="">
@@ -83,7 +83,7 @@
                             <a href="{{ $advertisement_data->company_listing_ad_url }}" target="_blank"><img src="{{ asset('uploads/'.$advertisement_data->company_listing_ad) }}" alt=""></a>
                         @endif
                     </div>
-                    @endif --}}
+                    @endif
 
 
                 </div>

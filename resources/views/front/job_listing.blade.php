@@ -89,11 +89,15 @@
                             </button>
                         </div>
                     </form>
+                    @if($advertisement_data->job_listing_ad_status == 'Show')
                     <div class="advertisement">
-                        <a href=""
-                            ><img src="uploads/ad-2.png" alt=""
-                        /></a>
+                        @if($advertisement_data->job_listing_ad_url == null)
+                            <img src="{{ asset('uploads/'.$advertisement_data->job_listing_ad) }}" alt="">
+                        @else
+                            <a href="{{ $advertisement_data->job_listing_ad_url }}" target="_blank"><img src="{{ asset('uploads/'.$advertisement_data->job_listing_ad) }}" alt=""></a>
+                        @endif
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-9">

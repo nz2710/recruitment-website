@@ -55,11 +55,11 @@ class CompanyListingController extends Controller
 
         $companies = $companies->paginate(9);
 
-        // $advertisement_data = Advertisement::where('id',1)->first();
+        $advertisement_data = Advertisement::where('id',1)->first();
 
         // $other_page_item = PageOtherItem::where('id',1)->first();
 
-        return view('front.company_listing', compact('companies','company_industries','company_locations','company_sizes','form_name','form_industry','form_location','form_size','form_founded'));
+        return view('front.company_listing', compact('companies','company_industries','company_locations','company_sizes','form_name','form_industry','form_location','form_size','form_founded','advertisement_data'));
     }
 
     public function detail($id)
