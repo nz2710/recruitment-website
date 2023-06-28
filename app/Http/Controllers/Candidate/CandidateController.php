@@ -2,28 +2,38 @@
 
 namespace App\Http\Controllers\Candidate;
 
-use Auth;
-use Hash;
-use App\Models\Job;
-use App\Mail\WebsiteMail;
-use App\Models\Candidate;
-use Illuminate\Http\Request;
-use App\Models\CandidateAward;
-use App\Models\CandidateSkill;
-use App\Models\CandidateResume;
-use Illuminate\Validation\Rule;
-use App\Models\CandidateBookmark;
-use App\Models\CandidateEducation;
-use App\Models\CandidateExperience;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Job;
+use App\Models\Candidate;
+use App\Models\CandidateEducation;
+use App\Models\CandidateSkill;
+use App\Models\CandidateExperience;
+use App\Models\CandidateAward;
+use App\Models\CandidateResume;
+use App\Models\CandidateBookmark;
 use App\Models\CandidateApplication;
+use App\Mail\WebsiteMail;
+use Illuminate\Validation\Rule;
+use Hash;
+use Auth;
 
 
 class CandidateController extends Controller
 {
     public function dashboard()
     {
-        return view('candidate.dashboard');
+        $total_applied_jobs=0;
+        $total_rejected_jobs=0;
+        $total_approved_jobs=0;
+
+        $total_applied_jobs = CandidateApplication::where('candidate_id',Auth::guard('candidate')->user()->id)->where('status','Applied')->count();
+
+        $total_rejected_jobs = CandidateApplication::where('candidate_id',Auth::guard('candidate')->user()->id)->where('status','Rejected')->count();
+
+        $total_approved_jobs = CandidateApplication::where('candidate_id',Auth::guard('candidate')->user()->id)->where('status','Approved')->count();
+
+        return view('candidate.dashboard',compact('total_applied_jobs','total_rejected_jobs','total_approved_jobs'));
     }
 
     public function edit_profile()
