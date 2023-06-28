@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Front\JobListingController;
+use App\Http\Controllers\Admin\AdminBannerController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminFaqPageController;
 use App\Http\Controllers\Admin\AdminJobTypeController;
@@ -328,4 +329,7 @@ Route::middleware(['admin:admin'])->group(function(){
 
     Route::get('/admin/advertisement', [AdminAdvertisementController::class, 'index'])->name('admin_advertisement');
     Route::post('/admin/advertisement/update', [AdminAdvertisementController::class, 'update'])->name('admin_advertisement_update');
+
+    Route::get('/admin/banner', [AdminBannerController::class, 'index'])->name('admin_banner');
+    Route::post('/admin/banner/update', [AdminBannerController::class, 'update'])->name('admin_banner_update');
 });
