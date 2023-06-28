@@ -173,6 +173,10 @@ Route::middleware(['candidate:candidate'])->group(function() {
     Route::get('/candidate/bookmark-view', [CandidateController::class, 'bookmark_view'])->name('candidate_bookmark_view');
     Route::get('/candidate/bookmark-delete/{id}', [CandidateController::class, 'bookmark_delete'])->name('candidate_bookmark_delete');
 
+    Route::get('/candidate/apply/{id}', [CandidateController::class, 'apply'])->name('candidate_apply');
+    Route::post('/candidate/apply-submit/{id}', [CandidateController::class, 'apply_submit'])->name('candidate_apply_submit');
+    Route::get('/candidate/applications', [CandidateController::class, 'applications'])->name('candidate_applications');
+
 });
 
 /* Admin */
