@@ -66,7 +66,9 @@ class JobListingController extends Controller
 
         $jobs = $jobs->paginate(9);
 
-        return view('front.job_listing', compact('jobs','job_categories','job_locations','job_types','job_experiences','job_genders','job_salary_ranges','form_title','form_category','form_location','form_type','form_experience','form_gender','form_salary_range'));
+        $advertisement_data = Advertisement::where('id',1)->first();
+
+        return view('front.job_listing', compact('jobs','job_categories','job_locations','job_types','job_experiences','job_genders','job_salary_ranges','form_title','form_category','form_location','form_type','form_experience','form_gender','form_salary_range','advertisement_data'));
 
     }
 
