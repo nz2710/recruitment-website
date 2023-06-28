@@ -1,7 +1,7 @@
 @extends('front.layout.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url('{{ asset('uploads/banner.jpg') }}')">
+<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_job_listing) }}')">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
@@ -89,11 +89,15 @@
                             </button>
                         </div>
                     </form>
+                    @if($advertisement_data->job_listing_ad_status == 'Show')
                     <div class="advertisement">
-                        <a href=""
-                            ><img src="uploads/ad-2.png" alt=""
-                        /></a>
+                        @if($advertisement_data->job_listing_ad_url == null)
+                            <img src="{{ asset('uploads/'.$advertisement_data->job_listing_ad) }}" alt="">
+                        @else
+                            <a href="{{ $advertisement_data->job_listing_ad_url }}" target="_blank"><img src="{{ asset('uploads/'.$advertisement_data->job_listing_ad) }}" alt=""></a>
+                        @endif
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-9">

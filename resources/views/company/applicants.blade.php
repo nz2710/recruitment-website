@@ -1,13 +1,12 @@
 @extends('front.layout.app')
 
 @section('main_content')
-
-<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_candidate_panel) }}')">
+<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_company_panel) }}')">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Applied Jobs</h2>
+                <h2>Applicants of job: {{ $job_single->title }}</h2>
             </div>
         </div>
     </div>
@@ -18,48 +17,61 @@
         <div class="row">
             <div class="col-lg-3 col-md-12">
                 <div class="card">
-                    @include('candidate.sidebar')
+                    @include('company.sidebar')
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                @if(!$applied_jobs->count())
-                    <div class="text-danger">No data found</div>
-                @else
+                <h4>Applicants of this job:</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <th>SL</th>
-                                <th>Job Title</th>
-                                <th>Company</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
                                 <th>Status</th>
-                                <th>Cover Letter</th>
-                                <th class="w-100">Detail</th>
+                                <th>Action</th>
+                                <th>Detail</th>
+                                <th>CV</th>
                             </tr>
+
                             @php $i=0; @endphp
-                            @foreach($applied_jobs as $item)
+                            @foreach($applicants as $item)
                             @php $i++; @endphp
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->rJob->title }}</td>
-                                <td>{{ $item->rJob->rCompany->company_name }}</td>
+                                <td>{{ $item->rCandidate->name }}</td>
+                                <td>{{ $item->rCandidate->email }}</td>
+                                <td>{{ $item->rCandidate->phone }}</td>
                                 <td>
                                     @if($item->status == 'Applied')
-                                        @php $color = 'primary'; @endphp
+                                        @php $color="primary"; @endphp
                                     @elseif($item->status == 'Approved')
-                                        @php $color = 'success'; @endphp
+                                        @php $color="success"; @endphp
                                     @elseif($item->status == 'Rejected')
-                                        @php $color = 'danger'; @endphp
+                                        @php $color="danger"; @endphp
                                     @endif
-                                    <div class="badge bg-{{ $color }}">
-                                        {{ $item->status }}
-                                    </div>
+                                    <span class="badge bg-{{ $color }}">{{ $item->status }}</span>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $i }}">Cover Letter</a>
+                                    <form action="{{ route('company_application_status_change') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="job_id" value="{{ $job_single->id }}">
+                                    <input type="hidden" name="candidate_id" value="{{ $item->candidate_id }}">
+                                    <select name="status" class="form-control select2 w_100" onchange="this.form.submit()">
+                                        <option value="">Select</option>
+                                        <option value="Applied">Applied</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                    </form>
                                 </td>
                                 <td>
-                                    <a href="{{ route('job',$item->rJob->id) }}" class="btn btn-primary btn-sm text-white"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('company_applicant_resume',$item->candidate_id) }}" class="badge bg-primary text-white" target="_blank">Detail</a>
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $i }}">CV</a>
 
                                     <div class="modal fade" id="exampleModal{{ $i }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -74,14 +86,13 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </td>
                             </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
-                @endif
             </div>
         </div>
     </div>

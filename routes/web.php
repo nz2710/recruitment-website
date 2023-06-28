@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Front\JobListingController;
+use App\Http\Controllers\Admin\AdminBannerController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminFaqPageController;
 use App\Http\Controllers\Admin\AdminJobTypeController;
@@ -37,6 +38,7 @@ use App\Http\Controllers\Admin\AdminJobLocationController;
 use App\Http\Controllers\Admin\AdminPricingPageController;
 use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Admin\AdminAdvertisementController;
 use App\Http\Controllers\Admin\AdminJobExperienceController;
 use App\Http\Controllers\Admin\AdminJobSalaryRangeController;
 use App\Http\Controllers\Admin\AdminCompanyIndustryController;
@@ -113,6 +115,11 @@ Route::middleware(['company:company'])->group(function() {
     Route::get('/company/job-edit/{id}', [CompanyController::class, 'jobs_edit'])->name('company_jobs_edit');
     Route::post('/company/job-update/{id}', [CompanyController::class, 'jobs_update'])->name('company_jobs_update');
     Route::get('/company/job-delete/{id}', [CompanyController::class, 'jobs_delete'])->name('company_jobs_delete');
+
+    Route::get('/company/candidate-applications', [CompanyController::class, 'candidate_applications'])->name('company_candidate_applications');
+    Route::get('/company/applicants/{id}', [CompanyController::class, 'applicants'])->name('company_applicants');
+    Route::get('/company/applicant-resume/{id}', [CompanyController::class, 'applicant_resume'])->name('company_applicant_resume');
+    Route::post('/company/application-status-change', [CompanyController::class, 'application_status_change'])->name('company_application_status_change');
 });
 
 
@@ -319,4 +326,10 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/company-size/edit/{id}', [AdminCompanySizeController::class, 'edit'])->name('admin_company_size_edit');
     Route::post('/admin/company-size/update/{id}', [AdminCompanySizeController::class, 'update'])->name('admin_company_size_update');
     Route::get('/admin/company-size/delete/{id}', [AdminCompanySizeController::class, 'delete'])->name('admin_company_size_delete');
+
+    Route::get('/admin/advertisement', [AdminAdvertisementController::class, 'index'])->name('admin_advertisement');
+    Route::post('/admin/advertisement/update', [AdminAdvertisementController::class, 'update'])->name('admin_advertisement_update');
+
+    Route::get('/admin/banner', [AdminBannerController::class, 'index'])->name('admin_banner');
+    Route::post('/admin/banner/update', [AdminBannerController::class, 'update'])->name('admin_banner_update');
 });

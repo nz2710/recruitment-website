@@ -4,7 +4,7 @@
 @section('seo_meta_description'){{ $other_page_item->company_listing_page_meta_description }}@endsection --}}
 
 @section('main_content')
-<div class="page-top" style="background-image: url('{{ asset('uploads/banner.jpg') }}')">
+<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_job_listing) }}')">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
@@ -75,7 +75,7 @@
 
                     </form>
 
-                    {{-- @if($advertisement_data->company_listing_ad_status == 'Show')
+                    @if($advertisement_data->company_listing_ad_status == 'Show')
                     <div class="advertisement">
                         @if($advertisement_data->company_listing_ad_url == null)
                             <img src="{{ asset('uploads/'.$advertisement_data->company_listing_ad) }}" alt="">
@@ -83,7 +83,7 @@
                             <a href="{{ $advertisement_data->company_listing_ad_url }}" target="_blank"><img src="{{ asset('uploads/'.$advertisement_data->company_listing_ad) }}" alt=""></a>
                         @endif
                     </div>
-                    @endif --}}
+                    @endif
 
 
                 </div>

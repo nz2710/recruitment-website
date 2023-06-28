@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>All Jobs</h2>
+                <h2>Candidate Applications</h2>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-
+                <h4>All Job Posts</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>
@@ -31,7 +31,8 @@
                                 <th>Category</th>
                                 <th>Location</th>
                                 <th>Is Featured?</th>
-                                <th>Action</th>
+                                <th>Job Detail</th>
+                                <th>Applicants</th>
                             </tr>
 
                             @foreach($jobs as $item)
@@ -48,8 +49,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('company_jobs_edit',$item->id) }}" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i></a>
-                                    <a href="{{ route('company_jobs_delete',$item->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{ route('job',$item->id) }}" class="badge bg-primary text-white">Detail</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('company_applicants',$item->id) }}" class="badge bg-primary text-white">Applicants</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -57,7 +60,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
