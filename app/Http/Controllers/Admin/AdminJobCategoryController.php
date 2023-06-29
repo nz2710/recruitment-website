@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\JobCategory;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\JobCategory;
 use App\Models\Job;
+
 class AdminJobCategoryController extends Controller
 {
     public function index()

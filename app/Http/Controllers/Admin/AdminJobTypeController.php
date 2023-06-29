@@ -57,6 +57,11 @@ class AdminJobTypeController extends Controller
 
     public function delete($id)
     {
+        $check = Job::where('job_type_id',$id)->count();
+        if($check>0) {
+            return redirect()->back()->with('error', 'You can not delete this item, because this is used in another place.');
+        }
+
         JobType::where('id',$id)->delete();
         return redirect()->route('admin_job_type')->with('success', 'Data is deleted successfully.');
     }

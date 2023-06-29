@@ -527,6 +527,8 @@ class CompanyController extends Controller
     public function jobs_delete($id)
     {
         Job::where('id',$id)->delete();
+        CandidateApplication::where('job_id',$id)->delete();
+        CandidateBookmark::where('job_id',$id)->delete();
 
         return redirect()->route('company_jobs')->with('success', 'Job is deleted successfully.');
     }
