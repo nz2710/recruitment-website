@@ -13,7 +13,6 @@
 
         @include('front.layout.scripts')
 
-
         <link
             href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
             rel="stylesheet"
@@ -65,12 +64,7 @@
 
         @include('front.layout.nav')
 
-        @yield('main_content')
-
-
-
-            </div>
-        </div>
+        @yield('main_content')        
 
         <div class="footer">
             <div class="container">
@@ -181,16 +175,14 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="copyright">
-                            Copyright 2022, ArefinDev. All Rights Reserved.
+                            {{ $global_settings_data->copyright_text }}
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="right">
                             <ul>
-                                <li><a href="{{ route('terms')}}">Terms of Use</a></li>
-                                <li>
-                                    <a href="{{ route('privacy') }}">Privacy Policy</a>
-                                </li>
+                                <li><a href="{{ route('terms') }}">Terms of Use</a></li>
+                                <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                             </ul>
                         </div>
                     </div>
@@ -274,7 +266,7 @@
                                 message: data.success_message,
                             });
                          }
-
+        
                     }
                 });
             });
