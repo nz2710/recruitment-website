@@ -19,6 +19,7 @@ class JobListingController extends Controller
 {
     public function index(Request $request)
     {
+
         $job_categories = JobCategory::orderBy('name','asc')->get();
         $job_locations = JobLocation::orderBy('name','asc')->get();
         $job_types = JobType::orderBy('name','asc')->get();
@@ -63,7 +64,7 @@ class JobListingController extends Controller
         if($request->salary_range != null) {
             $jobs = $jobs->where('job_salary_range_id',$request->salary_range);
         }
-
+       
         $jobs = $jobs->paginate(9);
 
         $advertisement_data = Advertisement::where('id',1)->first();
@@ -71,11 +72,10 @@ class JobListingController extends Controller
         $other_page_item = PageOtherItem::where('id',1)->first();
 
         return view('front.job_listing', compact('jobs','job_categories','job_locations','job_types','job_experiences','job_genders','job_salary_ranges','form_title','form_category','form_location','form_type','form_experience','form_gender','form_salary_range','advertisement_data','other_page_item'));
-
     }
 
     public function detail($id)
-    {
+    {        
         $job_single = Job::with('rCompany','rJobCategory','rJobLocation','rJobType','rJobExperience','rJobGender','rJobSalaryRange')->where('id',$id)->first();
 
         $jobs = Job::with('rCompany','rJobCategory','rJobLocation','rJobType','rJobExperience','rJobGender','rJobSalaryRange')->where('job_category_id',$job_single->job_category_id)->get();

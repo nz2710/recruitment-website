@@ -52,7 +52,7 @@ class CompanyListingController extends Controller
         if($request->founded != null) {
             $companies = $companies->where('founded_on',$request->founded);
         }
-
+       
         $companies = $companies->paginate(9);
 
         $advertisement_data = Advertisement::where('id',1)->first();
@@ -76,7 +76,7 @@ class CompanyListingController extends Controller
         } else {
             $company_photos = '';
         }
-
+        
         if(CompanyVideo::where('company_id',$company_single->id)->exists()) {
             $company_videos = CompanyVideo::where('company_id',$company_single->id)->get();
         } else {

@@ -4,12 +4,12 @@
 @section('seo_meta_description'){{ $other_page_item->company_listing_page_meta_description }}@endsection
 
 @section('main_content')
-<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_job_listing) }}')">
+<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_company_listing) }}')">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Company Listing</h2>
+                <h2>{{ $other_page_item->company_listing_page_heading }}</h2>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="job-filter">
-
+                    
                     <form action="{{ url('company-listing') }}" method="get">
                     <div class="widget">
                         <h2>Company Name</h2>

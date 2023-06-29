@@ -11,9 +11,9 @@
             <div class="col-md-12">
                 <div class="item">
                     <div class="text">
-                    <h2>{{$home_page_data->heading}}</h2>
+                        <h2>{{ $home_page_data->heading }}</h2>
                         <p>
-                        {!! $home_page_data-> text !!}
+                            {!! $home_page_data->text !!}
                         </p>
                     </div>
                     <div class="search-section">
@@ -22,9 +22,7 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <input type="text" name="title" class="form-control"
-                                                placeholder="{{$home_page_data->job_title}}"
-                                            />
+                                            <input type="text" name="title" class="form-control" placeholder="{{ $home_page_data->job_title }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -54,7 +52,7 @@
                                         <input type="hidden" name="salary_range" value="">
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fas fa-search"></i>
-                                            {{$home_page_data->search}}
+                                            {{ $home_page_data->search }}
                                         </button>
                                     </div>
                                 </div>
@@ -107,42 +105,44 @@
 </div>
 @endif
 
+
 @if($home_page_data->why_choose_status == 'Show')
 <div
     class="why-choose"
     style="background-image: url({{ asset('uploads/'.$home_page_data->why_choose_background) }})"
 >
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="heading">
-                <h2>{{ $home_page_data->why_choose_heading}}</h2>
-                <p>
-                    {{ $home_page_data->why_choose_subheading}}
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        @foreach($why_choose_items as $item)
-        <div class="col-md-4">
-            <div class="inner">
-                <div class="icon">
-                    <i class="{{ $item->icon }}"></i>
-                </div>
-                <div class="text">
-                    <h2>{{ $item->heading }}</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading">
+                    <h2>{{ $home_page_data->why_choose_heading}}</h2>
                     <p>
-                        {!! nl2br($item->text) !!}
+                        {{ $home_page_data->why_choose_subheading}}
                     </p>
                 </div>
             </div>
         </div>
-        @endforeach
+        <div class="row">
+            @foreach($why_choose_items as $item)
+            <div class="col-md-4">
+                <div class="inner">
+                    <div class="icon">
+                        <i class="{{ $item->icon }}"></i>
+                    </div>
+                    <div class="text">
+                        <h2>{{ $item->heading }}</h2>
+                        <p>
+                            {!! nl2br($item->text) !!}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
-</div>
 @endif
+
 
 @if($home_page_data->featured_jobs_status == 'Show')
 <div class="job">
@@ -156,7 +156,7 @@
             </div>
         </div>
         <div class="row">
-            @php $i=0; @endphp
+            @php $i=0; @endphp 
             @foreach($featured_jobs as $item)
 
             @php
@@ -170,7 +170,7 @@
                 break;
             }
             @endphp
-
+            
             <div class="col-lg-6 col-md-12">
                 <div class="item d-flex justify-content-start">
                     <div class="logo">
@@ -235,7 +235,7 @@
                 </div>
             </div>
             @endforeach
-
+            
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -248,8 +248,10 @@
 </div>
 @endif
 
+
+
 @if($home_page_data->testimonial_status == 'Show')
-<div class="testimonial" style="background-image: url({{ asset('uploads/'.$home_page_data->testimonial_background) }})" >
+<div class="testimonial" style="background-image: url({{ asset('uploads/'.$home_page_data->testimonial_background) }})">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
@@ -260,7 +262,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="testimonial-carousel owl-carousel">
-
+                    
                     @foreach($testimonials as $item)
                     <div class="item">
                         <div class="photo">
@@ -272,17 +274,20 @@
                         </div>
                         <div class="description">
                             <p>
-                               {!! nl2br($item->comment) !!}
+                                {!! nl2br($item->comment) !!}
                             </p>
                         </div>
                     </div>
                     @endforeach
+
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endif
+
 
 @if($home_page_data->blog_status == 'Show')
 <div class="blog">
@@ -325,8 +330,8 @@
                 </div>
             </div>
             @endforeach
-
-
+            
+            
         </div>
     </div>
 </div>
