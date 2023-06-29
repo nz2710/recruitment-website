@@ -49,7 +49,6 @@ class CompanyController extends Controller
         $orders = Order::with('rPackage')->orderBy('id', 'desc')->where('company_id',Auth::guard('company')->user()->id)->get();
         return view('company.orders', compact('orders'));
     }
-
     public function edit_profile()
     {
         $company_locations = CompanyLocation::orderBy('name', 'asc')->get();
@@ -246,8 +245,6 @@ class CompanyController extends Controller
         CompanyVideo::where('id',$id)->delete();
         return redirect()->back()->with('success', 'Video is deleted successfully.');
     }
-
-
     public function make_payment()
     {
         $current_plan = Order::with('rPackage')->where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
@@ -333,7 +330,6 @@ class CompanyController extends Controller
     {
         return redirect()->route('company_make_payment')->with('error', 'Payment is cancelled!');
     }
-
 
     public function stripe(Request $request)
     {
@@ -527,7 +523,6 @@ class CompanyController extends Controller
     public function jobs_delete($id)
     {
         Job::where('id',$id)->delete();
-
         return redirect()->route('company_jobs')->with('success', 'Job is deleted successfully.');
     }
 
@@ -577,5 +572,4 @@ class CompanyController extends Controller
 
         return redirect()->back()->with('success', 'Status is changed successfully!');
     }
-
 }
