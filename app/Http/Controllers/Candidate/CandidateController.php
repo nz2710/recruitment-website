@@ -18,7 +18,6 @@ use Illuminate\Validation\Rule;
 use Hash;
 use Auth;
 
-
 class CandidateController extends Controller
 {
     public function dashboard()
@@ -40,11 +39,12 @@ class CandidateController extends Controller
     {
         return view('candidate.edit_profile');
     }
+
     public function edit_profile_update(Request $request)
     {
         $obj = Candidate::where('id',Auth::guard('candidate')->user()->id)->first();
         $id = $obj->id;
-
+        
         $request->validate([
             'name' => 'required',
             'username' => ['required','alpha_dash',Rule::unique('candidates')->ignore($id)],
@@ -58,7 +58,7 @@ class CandidateController extends Controller
 
             if(Auth::guard('candidate')->user()->photo != '') {
                 unlink(public_path('uploads/'.$obj->photo));
-            }
+            }            
 
             $ext = $request->file('photo')->extension();
             $final_name = 'candidate_photo_'.time().'.'.$ext;
@@ -156,7 +156,7 @@ class CandidateController extends Controller
             'degree' => 'required',
             'passing_year' => 'required'
         ]);
-
+        
         $obj->level = $request->level;
         $obj->institute = $request->institute;
         $obj->degree = $request->degree;
@@ -214,7 +214,7 @@ class CandidateController extends Controller
             'name' => 'required',
             'percentage' => 'required'
         ]);
-
+        
         $obj->name = $request->name;
         $obj->percentage = $request->percentage;
         $obj->update();
@@ -276,7 +276,7 @@ class CandidateController extends Controller
             'start_date' => 'required',
             'end_date' => 'required'
         ]);
-
+        
         $obj->company = $request->company;
         $obj->designation = $request->designation;
         $obj->start_date = $request->start_date;
@@ -338,7 +338,7 @@ class CandidateController extends Controller
             'description' => 'required',
             'date' => 'required'
         ]);
-
+        
         $obj->title = $request->title;
         $obj->description = $request->description;
         $obj->date = $request->date;
@@ -414,7 +414,7 @@ class CandidateController extends Controller
 
             $obj->file = $final_name;
         }
-
+        
         $obj->name = $request->name;
         $obj->update();
 

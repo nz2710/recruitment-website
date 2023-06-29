@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Banner;
+use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         $banner_data = Banner::where('id',1)->first();
-        // $settings_data = Setting::where('id',1)->first();
+        $settings_data = Setting::where('id',1)->first();
         view()->share('global_banner_data', $banner_data);
-        // view()->share('global_settings_data', $settings_data);
+        view()->share('global_settings_data', $settings_data);
     }
 }

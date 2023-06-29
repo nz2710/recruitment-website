@@ -52,7 +52,7 @@ class CompanyListingController extends Controller
         if($request->founded != null) {
             $companies = $companies->where('founded_on',$request->founded);
         }
-
+       
         $companies = $companies->paginate(9);
 
         $advertisement_data = Advertisement::where('id',1)->first();
@@ -64,10 +64,10 @@ class CompanyListingController extends Controller
 
     public function detail($id)
     {
-        // $order_data = Order::where('company_id',$id)->where('currently_active',1)->first();
-        // if(date('Y-m-d') > $order_data->expire_date) {
-        //     return redirect()->route('home');
-        // }
+        $order_data = Order::where('company_id',$id)->where('currently_active',1)->first();
+        if(date('Y-m-d') > $order_data->expire_date) {
+            return redirect()->route('home');
+        }
 
         $company_single = Company::withCount('rJob')->with('rCompanyIndustry','rCompanyLocation','rCompanySize')->where('id',$id)->first();
 
@@ -76,7 +76,7 @@ class CompanyListingController extends Controller
         } else {
             $company_photos = '';
         }
-
+        
         if(CompanyVideo::where('company_id',$company_single->id)->exists()) {
             $company_videos = CompanyVideo::where('company_id',$company_single->id)->get();
         } else {
