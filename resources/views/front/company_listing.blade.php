@@ -102,12 +102,12 @@
                                 <div class="text-danger">No Result Found</div>
                             @else
                             @foreach($companies as $item)
-                            {{-- @php
+                            @php
                             $order_data = \App\Models\Order::where('company_id',$item->id)->where('currently_active',1)->first();
                             if(date('Y-m-d') > $order_data->expire_date) {
                                 continue;
                             }
-                            @endphp --}}
+                            @endphp
                             <div class="col-md-12">
                                 <div class="item d-flex justify-content-start">
                                     <div class="logo">
